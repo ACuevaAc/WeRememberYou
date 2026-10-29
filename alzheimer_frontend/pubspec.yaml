@@ -20,3 +20,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/imgs/logo.png
+    - assets/imgs/cuidador-paciente.png
