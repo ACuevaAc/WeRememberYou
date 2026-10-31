@@ -1,3 +1,4 @@
+import 'package:alzheimer_frontend/presentation/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -25,9 +26,10 @@ class WelcomeScreen extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Image.asset("assets/imgs/logo.png"),
+                    Image.asset("assets/imgs/logo.png",width: 250,height: 250,),
+                    Image.asset("assets/imgs/cuidador-paciente.png"),
                     
-                   
+                    const SizedBox(height: 60,),
                     const Text(
                       "¡Bienvenido!",
                       style: TextStyle(
@@ -56,7 +58,9 @@ class WelcomeScreen extends StatelessWidget {
                       height: 56,
                       child: ElevatedButton.icon(
                         onPressed: () {
-                          // Aqui metere el Navigator al login
+                          Navigator.push(context, MaterialPageRoute<void> (
+                            builder: (context) => LoginScreen(),
+                          ));
                         },
                         icon: Icon(Icons.person,size:30),
                         label: Text("Iniciar Sesion",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold)),
@@ -75,7 +79,7 @@ class WelcomeScreen extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       height: 56,
-                      child: OutlinedButton(
+                      child: OutlinedButton.icon(
                         onPressed: () {
                           // Navegación a Registro con el navigator
                         },
@@ -86,9 +90,10 @@ class WelcomeScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(16),
                           ),
                         ),
-                        child: const Text(
+                        icon: const Icon(Icons.rocket_launch,size: 30,),
+                        label: const Text(
                           'Registrarse',
-                          style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold),
+                          style: TextStyle(fontSize: 22,color: Color.fromARGB(255,195,109,253), fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
