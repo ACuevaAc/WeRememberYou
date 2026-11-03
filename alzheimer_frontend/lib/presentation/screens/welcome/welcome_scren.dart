@@ -1,4 +1,5 @@
-import 'package:alzheimer_frontend/presentation/screens/login/login_screen.dart'; 
+import 'package:alzheimer_frontend/presentation/screens/login/login_screen.dart';
+import 'package:alzheimer_frontend/presentation/screens/register/register_screen.dart'; 
 import 'package:flutter/material.dart'; 
 
 class WelcomeScreen extends StatelessWidget {
@@ -21,11 +22,11 @@ class WelcomeScreen extends StatelessWidget {
         child: SafeArea( 
           child: Padding( 
             padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20), 
-            // LayoutBuilder nos da el tamaño máximo disponible de la pantalla actual
+            
             child: LayoutBuilder(
               builder: (context, constraints) {
                 return SingleChildScrollView(
-                  // physics evita el scroll si el contenido cabe perfectamente
+                  
                   physics: const ClampingScrollPhysics(),
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
@@ -35,29 +36,29 @@ class WelcomeScreen extends StatelessWidget {
                       child: Column( 
                         mainAxisAlignment: MainAxisAlignment.spaceBetween, 
                         children: [ 
-                          // Bloque Superior: Logos y Textos
+                          
                           Column( 
                             children: [ 
-                              // Usamos Image.asset con dimensiones dinámicas basadas en la pantalla
+                              
                               Image.asset(
                                 "assets/imgs/logo.png",
-                                width: constraints.maxHeight * 0.20, // 25% del alto de la pantalla
+                                width: constraints.maxHeight * 0.20, 
                                 height: constraints.maxHeight * 0.20,
                                 fit: BoxFit.contain,
                               ), 
                               Image.asset(
                                 "assets/imgs/cuidador-paciente.png",
-                                height: constraints.maxHeight * 0.35, // 20% del alto de la pantalla
+                                height: constraints.maxHeight * 0.35, 
                                 fit: BoxFit.contain,
                               ), 
                               
-                              // Espaciadores adaptativos en lugar de SizedBox fijos gigantes
+                              
                               SizedBox(height: constraints.maxHeight * 0.04), 
                               
                               const Text( 
                                 "¡Bienvenido!", 
                                 style: TextStyle( 
-                                  fontSize: 30, // Bajado sutilmente para pantallas pequeñas
+                                  fontSize: 30, 
                                   fontWeight: FontWeight.bold, 
                                   color: Color(0xFF1F2937), 
                                   letterSpacing: 0.5, 
@@ -110,7 +111,7 @@ class WelcomeScreen extends StatelessWidget {
                                 height: 54, 
                                 child: OutlinedButton.icon( 
                                   onPressed: () { 
-                                    // Navegación a Registro
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
                                   }, 
                                   style: OutlinedButton.styleFrom( 
                                     side: const BorderSide(color: Color.fromARGB(255, 195, 109, 253), width: 2), 
