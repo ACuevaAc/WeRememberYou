@@ -1,4 +1,5 @@
-import 'package:alzheimer_frontend/presentation/screens/login/login_screen.dart'; 
+import 'package:alzheimer_frontend/presentation/screens/login/login_screen.dart';
+import 'package:alzheimer_frontend/presentation/screens/register/register_screen.dart'; 
 import 'package:flutter/material.dart'; 
 
 class WelcomeScreen extends StatelessWidget {
@@ -35,7 +36,7 @@ class WelcomeScreen extends StatelessWidget {
                       child: Column( 
                         mainAxisAlignment: MainAxisAlignment.spaceBetween, 
                         children: [ 
-                          // Bloque Superior: Logos y Textos
+                          
                           Column( 
                             children: [ 
                               
@@ -110,7 +111,7 @@ class WelcomeScreen extends StatelessWidget {
                                 height: 54, 
                                 child: OutlinedButton.icon( 
                                   onPressed: () { 
-                                    // Navegación a Registro
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
                                   }, 
                                   style: OutlinedButton.styleFrom( 
                                     side: const BorderSide(color: Color.fromARGB(255, 195, 109, 253), width: 2), 
