@@ -6,7 +6,7 @@ class AuthService {
 
   final Dio _dio=Dio(BaseOptions(baseUrl: ApiConfig.baseUrl));
 
-  Future<UserModel?> registerUser ({
+  Future<Map<String,dynamic>?> registerUser ({
     required String name,
     required String email,
     required String password,
@@ -27,7 +27,11 @@ class AuthService {
         },
       );
       if(response.statusCode==201 || response.statusCode==200) {
-        return UserModel.fromJson(response.data['user']);
+        final responseData=response.data;
+        return {
+          'access_token':responseData['access_token'],
+          'user': responseData['user']
+        };
       }
       return null;
     } on DioException catch(e) {
@@ -35,6 +39,10 @@ class AuthService {
       print("ERROR DATA: ${e.response?.data}");
       print("ERROR MENSAJE: ${e.message}");
       print("REQUEST DATA: ${e.requestOptions.data}");
+      return null;
+    } catch (e) {
+      print("ERROR TEST NO ESPERADO: $e");
+      return null;
     }
   }
 }
