@@ -1,0 +1,9 @@
+# IDE (IntelliJ / Android Studio / WebStorm)
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
