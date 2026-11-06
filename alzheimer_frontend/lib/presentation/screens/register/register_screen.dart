@@ -57,12 +57,14 @@ class _RegisterScreen extends State<RegisterScreen> {
                   _CustomTextField(
                     controller: _passwordController,
                     label: "Contraseña",
-                    icon: Icons.password
+                    icon: Icons.password,
+                    obscureText: true
                   ),
                   _CustomTextField(
                     controller:  _confirmController,
                     label: "Confirmacion de contraseña",
-                    icon: Icons.password
+                    icon: Icons.password,
+                    obscureText: true
                   ),
                   _CustomTextField(
                     controller: _phoneController,
