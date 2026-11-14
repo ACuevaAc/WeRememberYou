@@ -1,4 +1,7 @@
+import 'package:alzheimer_frontend/providers/auth_provider.dart';
+import 'package:alzheimer_frontend/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -14,6 +17,16 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _obscurePassword = true;
   bool _isLoading = false;
 
+  void _showSnackBar(String message) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(message),
+      backgroundColor: Colors.redAccent,
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    ),
+  );
+}
 
   @override
   void dispose() {
@@ -23,19 +36,31 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  Future<void> _submit() async {
-    if(!(_formKey.currentState?.validate() ?? false)) return;
+Future<void> _submit() async {
+  if (!(_formKey.currentState?.validate() ?? false)) return;
 
-    setState(() => _isLoading =true);
+  FocusManager.instance.primaryFocus?.unfocus();
+  setState(() => _isLoading = true);
 
-    await Future<void>.delayed(Duration (seconds: 2));
-  
-    if(!mounted) return;
+  final auth = context.read<AuthProvider>();
+  final ok = await auth.login(
+    email: _emailController.text.trim(),
+    password: _passwordController.text,
+  );
 
-    setState(() {
-      _isLoading =false;
-    });
+  if (!mounted) return;
+
+  setState(() => _isLoading = false);
+
+  if (!ok) {
+    _showSnackBar(auth.errorMessage ?? 'No se pudo iniciar sesión');
+    return;
   }
+
+  Navigator.of(context).pushReplacement(
+    MaterialPageRoute(builder: (_) => homeForRole(auth.role)),
+  );
+}
 
   @override
   Widget build(BuildContext context) {
