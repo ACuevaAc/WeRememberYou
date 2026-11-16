@@ -20,7 +20,6 @@ class _homeScreen extends State<HomeScreen> {
         const Center(child: Text("Pantalla de Consulta",style:TextStyle(fontSize: 24,fontWeight: FontWeight.bold))),
         const Center(child: Text("Pantalla de Pacientes",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold))),
         const Center(child: Text("Pantalla de Perfil",style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold))),
-
       ];
 
       @override
