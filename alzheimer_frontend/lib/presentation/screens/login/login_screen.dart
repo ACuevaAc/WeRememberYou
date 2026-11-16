@@ -108,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 270),
+                const SizedBox(height: 200),
                 SizedBox(
                   width: double.infinity,
                   height: 55,
@@ -123,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: Colors.white,
                       ),
                     )
-                    :const Text("LOG IN"),
+                    :const Text("Iniciar Sesion"),
                   ),
                 ),
               ],
