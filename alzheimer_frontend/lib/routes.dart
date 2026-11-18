@@ -9,7 +9,7 @@ Widget homeForRole(String? role) {
     case 'a':
       return const AdminDashboardScreen();
     case 'u':
-      return const CaregiverDashboardScreen();
+      return CaregiverDashboardScreen();
     case 'p':
       return const PatientDashboardScreen();
     default:
